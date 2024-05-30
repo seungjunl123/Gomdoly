@@ -1,19 +1,25 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'eclipse'
 }
 
 group = 'com.gomdoly.practice'
 version = '1.0-SNAPSHOT'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' } // milestone 저장소 추가
+    maven { url 'https://repo.spring.io/snapshot' } // snapshot 저장소 추가
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
+    // Spring Boot 웹 스타터
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Spring Boot 테스트 스타터
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
 }
