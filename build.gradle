@@ -11,15 +11,36 @@ sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' } // milestone 저장소 추가
-    maven { url 'https://repo.spring.io/snapshot' } // snapshot 저장소 추가
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
     // Spring Boot 웹 스타터
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // Spring Boot 테스트 스타터
+    // Spring Boot 테스트 스타터 (JUnit 5 포함)
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    // 스프링부트에 맞춰 JPA관련 라이브러리 버전을 관리
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.2.4'
+
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    // 인메모리 관계형 데이터베이스 h2
+    // 별도 설치 없이 의존성 주입만으로 인메모리에서 관리 가능
+    // 테스트 및 로컬 환경 구동 검증 용으로 사용
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
+    implementation 'com.h2database:h2'
+
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+}
+
+test {
+    useJUnitPlatform()
 }
