@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.0'
-    id 'io.spring.dependency-management' version '1.1.0'
+    id 'io.spring.dependency-management' version '1.1.5'
     id 'eclipse'
 }
 
@@ -38,7 +38,23 @@ dependencies {
     testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
     implementation 'com.h2database:h2'
 
+    // 무스타치 스타터
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
+    // 시큐리티 관련 의존성 주입
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+    testImplementation 'org.springframework.security:spring-security-test'
+    // Spring Security 6.3.1-SNAPSHOT 버전
+    implementation 'org.springframework.security:spring-security-config:6.3.1-SNAPSHOT'
+    implementation 'org.springframework.security:spring-security-web:6.3.1-SNAPSHOT'
+    implementation 'org.springframework.security:spring-security-core:6.3.1-SNAPSHOT'
+
+    // DB 세션 저장소 사용을 위한 의존성 주입
+    // https://mvnrepository.com/artifact/org.springframework.session/spring-session-jdbc
+    implementation group: 'org.springframework.session', name: 'spring-session-jdbc', version: '3.1.1'
 }
 
 test {
