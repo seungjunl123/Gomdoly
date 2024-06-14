@@ -55,6 +55,9 @@ dependencies {
     // DB 세션 저장소 사용을 위한 의존성 주입
     // https://mvnrepository.com/artifact/org.springframework.session/spring-session-jdbc
     implementation group: 'org.springframework.session', name: 'spring-session-jdbc', version: '3.1.1'
+
+    // MariaDB 드라이버 등록ajs
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
 }
 
 test {
