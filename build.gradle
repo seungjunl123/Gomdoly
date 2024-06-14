@@ -57,7 +57,7 @@ dependencies {
     implementation group: 'org.springframework.session', name: 'spring-session-jdbc', version: '3.1.1'
 
     // MariaDB 드라이버 등록ajs
-    implementation 'org.mariadb.jdbc:mariadb-java-client'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
 }
 
 test {
