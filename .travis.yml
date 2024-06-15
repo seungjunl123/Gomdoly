@@ -5,7 +5,7 @@ jdk:
 
 branches:
   only:
-    - main
+    - master
 
 #travis CI 서버의 Home
 cache:
