@@ -23,8 +23,7 @@ echo "> Start health check of WAS at 'http://127.0.0.1:${TARGET_PORT}' ..."
 for RETRY_COUNT in 1 2 3 4 5 6 7 8 9 10
 do
     echo "> #${RETRY_COUNT} trying..."
-    #뒤에 사용되는 임의로 만든부분이다. /test/log부분은 밑에서 설명!
-    RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}"  http://127.0.0.1:${TARGET_PORT}/test/log)
+    RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}"   http://127.0.0.1:${TARGET_PORT}/health)
 
     if [ ${RESPONSE_CODE} -eq 200 ]; then
         echo "> New WAS successfully running"

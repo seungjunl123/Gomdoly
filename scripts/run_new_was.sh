@@ -25,7 +25,7 @@ fi
 
 #nohup을 이용하여 프로젝트를 무중단실행시켜준다  (자세한건 구글링) , -Dserver.port를 이용하여 원하는포트로 프로젝트 실행가능
 
-nohup java -jar -Dserver.port=${TARGET_PORT} /home/ubuntu/Gomdoly/build/libs/* > /home/ubuntu/nohup.out 2>&1 &
+nohup java -jar -Dserver.port=${TARGET_PORT} /home/ubuntu/app/step1/Gomdoly/build/libs/* > /home/ubuntu/nohup.out 2>&1 &
 echo "> Now new WAS runs at ${TARGET_PORT}."
 
 exit 0
