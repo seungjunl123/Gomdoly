@@ -4,7 +4,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/app/step2/zip # 프로젝트 이름
+    destination: /home/ubuntu/app/step3/zip # 프로젝트 이름
     overwrite: yes
 
 permissions:
@@ -14,16 +14,15 @@ permissions:
     group: ubuntu
 
 hooks:
-  ApplicationStart:
-    - location: deploy.sh
+  AfterInstall:
+    - location: stop.sh
       timeout: 60
       runas: ubuntu
-    - location: script/run_new_was.sh
-      timeout: 180
-      runas: ubuntu
-    - location: script/health_check.sh
-      timeout: 180
-      runas: ubuntu
-    - location: script/switch.sh
-      timeout: 180
-      runas: ubuntu
+  ApplicationStart:
+  - location: start.sh
+    timeout: 180
+    runas: ubuntu
+  ValidateService:
+  - location: health.sh
+    timeout: 180
+    runas: ubuntu
